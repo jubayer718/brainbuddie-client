@@ -10,6 +10,7 @@ import PrivateRoute from "./Private/PrivateRoute";
 import AllAssignments from "../pages/allAssignments/AllAssignments";
 import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
 import { axiosSecure } from "../Hooks/useAxiosSecure";
+import Details from "../pages/Details/Details";
 
 
 const routes =  createBrowserRouter ([
@@ -28,7 +29,11 @@ const routes =  createBrowserRouter ([
       }, {
         path: '/pendingAssignment',
         element:<PrivateRoute><PendingAssignment></PendingAssignment></PrivateRoute>
-      }, 
+      },
+      {
+        path: '/assignment/details/:id',
+        element: <PrivateRoute><Details></Details></PrivateRoute>,
+      },
       
       {
           path: '/updateAssignment/:id',

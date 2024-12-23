@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import DatePicker from 'react-datepicker';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import Loading from '../../components/Loading/Loading';
 import { axiosSecure } from '../../Hooks/useAxiosSecure';
@@ -12,7 +12,8 @@ import Swal from 'sweetalert2';
 const UpdateAssignment = () => {
   
   const { user, loading } = useAuth();
-    const {id}=useParams()
+  // const {id}=useParams()
+  const navigate = useNavigate();
   if (loading) {
     return <Loading></Loading>
   }
@@ -51,12 +52,11 @@ const UpdateAssignment = () => {
       const { data } = await axiosSecure.patch(`/assignment/${user?.email}`, assignment);
 
     if (data.modifiedCount > 0) {
-         Swal.fire({
-            title: 'success!',
-            text: 'campaign Update successfully',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-          })
+      toast.success('update successful!!!', {
+        autoClose: 2000,
+
+       })
+          navigate('/all-assignment')
     }
     } catch (error) {
       toast.error(error.response.data)

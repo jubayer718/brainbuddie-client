@@ -78,7 +78,7 @@ const AssignmentCard = ({ ass, assignment, setAssignment, allAssData }) => {
        
        </div>
     <div className="flex flex-col gap-3">
-      <button className="btn bg-[#D2B48C] text-white"><FaEye></FaEye></button>
+      <Link to={`/assignment/details/${_id}`}  className="btn bg-[#D2B48C] text-white"><FaEye></FaEye></Link>
      <Link to={`/updateAssignment/${_id}`} className="btn bg-[#3C393B] text-white"><FaPen></FaPen></Link>
       <button onClick={()=>handleDelete(_id)} className="btn bg-[#EA4744] text-white"><RiDeleteBin6Line></RiDeleteBin6Line></button>
     </div>
