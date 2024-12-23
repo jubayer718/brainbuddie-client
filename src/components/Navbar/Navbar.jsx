@@ -17,11 +17,7 @@ const Navbar = () => {
           <li>
             <Link to='/'>Home</Link>
           </li>
-          {
-            user&&(<li>
-            <Link to='/pendingAssignment'>Pending Assign</Link>
-          </li>)
-          }
+          <li><Link to='/all-assignment'>Assignments</Link></li>
 
           {!user && (
             <li>
@@ -49,7 +45,14 @@ const Navbar = () => {
               tabIndex={0}
               className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
             >
-              
+               
+    
+          {
+            user&&(<li>
+            <Link to='/pendingAssignment'>Pending Assign</Link>
+          </li>)
+          }
+
               <li>
                 <Link to='/create-assignment'>Create Assignment</Link>
               </li>

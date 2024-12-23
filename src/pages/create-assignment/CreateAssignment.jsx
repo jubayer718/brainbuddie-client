@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
+import { axiosSecure } from "../../Hooks/useAxiosSecure";
 
 const CreateAssignment = () => {
 
@@ -23,10 +24,20 @@ const CreateAssignment = () => {
     setAssignment((prev) => ({ ...prev, dueDate: date }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    console.log("Assignment Details:", assignment);
+  
+    try {
+      // create a assignment
+      await axiosSecure.post(`/assignment`, assignment)
+      
     toast.success("Assignment created successfully!");
+    } catch (error) {
+      console.log(error);
+}
+   
+    console.log("Assignment Details:", assignment);
+
   };
   return (
     <div>
