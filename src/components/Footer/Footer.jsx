@@ -64,8 +64,8 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="mt-8 text-center">
-          <div className="form-control w-full md:w-1/2 mx-auto">
+        <div className="mt-8 text-center ">
+          <div className="form-control w-full md:w-1/2  mx-auto">
             <label className="input-group">
               <input type="email" placeholder="Enter your email" className="input input-bordered w-full" />
               <button className="btn btn-primary">Subscribe</button>
