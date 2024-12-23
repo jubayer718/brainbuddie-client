@@ -15,40 +15,47 @@ const AssignmentCard = ({ ass, assignment, setAssignment, allAssData }) => {
     return <Loading></Loading>
   }
   const {_id, title,thumbnail,marks,dueDate,difficulty,description} = ass
+  const [error, setError] = useState(null);
+
   
-
-
   
  const handleDelete = async (_id) => {
-    console.log(_id);
+   console.log(_id);
+   try {
+     if (error?.response?.data === "Permission not allowed") {
+       return toast.error('permission not allowed')
+     }
+     const result = await Swal.fire({
+       title: "Are you sure?",
+       text: "You won't be able to revert this!",
+       icon: "warning",
+       showCancelButton: true,
+       confirmButtonColor: "#3085d6",
+       cancelButtonColor: "#d33",
+       confirmButtonText: "Yes, delete it!"
+     });
 
-    const result = await Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    });
+     if (result.isConfirmed) {
+      
+       const { data } = await axiosSecure.delete(`/assignment/${user?.email}`);
 
-    if (result.isConfirmed) {
-        try {
-            const { data } = await axiosSecure.delete(`/assignment/${user?.email}`);
-
-            if (data.deletedCount > 0) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-                allAssData(); // Refresh the data
-            }
-        } catch (error) {
-            console.error(error);
-            toast.error(error.message);
+       if (data.deletedCount > 0) {
+         Swal.fire({
+           title: "Deleted!",
+           text: "Your file has been deleted.",
+           icon: "success"
+         });
+         allAssData(); // Refresh the data
+       }
+        
+     }
+   } catch (error) {
+          setError(error);
+          if (error?.response?.data === "Permission not allowed") {
+            toast.error('permission not allowed')
+          }
+           
         }
-    }
 };
 
   return (
@@ -72,7 +79,7 @@ const AssignmentCard = ({ ass, assignment, setAssignment, allAssData }) => {
        </div>
     <div className="flex flex-col gap-3">
       <button className="btn bg-[#D2B48C] text-white"><FaEye></FaEye></button>
-     <Link to={`updatedCoffee/${_id}`} className="btn bg-[#3C393B] text-white"><FaPen></FaPen></Link>
+     <Link to={`/updateAssignment/${_id}`} className="btn bg-[#3C393B] text-white"><FaPen></FaPen></Link>
       <button onClick={()=>handleDelete(_id)} className="btn bg-[#EA4744] text-white"><RiDeleteBin6Line></RiDeleteBin6Line></button>
     </div>
   </div>
