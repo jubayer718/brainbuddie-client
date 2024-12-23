@@ -3,16 +3,18 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
 
 const CreateAssignment = () => {
-
+  const { user } = useAuth();
     const [assignment, setAssignment] = useState({
     title: "",
     description: "",
     marks: "",
     thumbnail: "",
     difficulty: "easy", // Default value
-    dueDate: new Date(), // Default to today
+      dueDate: new Date(), // Default to today
+      email: user?.email, //current user email
   });
 
   const handleChange = (e) => {

@@ -4,84 +4,53 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { data, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
-
-const AssignmentCard = ({ass,assignment,setAssignment,allAssData}) => {
-  const {_id, title,thumbnail,marks,dueDate,difficulty,description} = ass
-
-  
- 
-
-    useEffect(() => {
-
-      handleDelete();
-  allAssData()
-    }, [])
-  
-  const handleDelete =async(_id) => {
-    const { data } = await axiosSecure.delete(`/ass-delete/${_id}`);
-    console.log(data);
-    
+import useAuth from "../../Hooks/useAuth";
+import Loading from "../Loading/Loading";
+import { createRoot } from "react-dom/client";
+import { toast } from "react-toastify";
+import {format} from 'date-fns'
+const AssignmentCard = ({ ass, assignment, setAssignment, allAssData }) => {
+  const { loading,user } = useAuth();
+  if (loading) {
+    return <Loading></Loading>
   }
+  const {_id, title,thumbnail,marks,dueDate,difficulty,description} = ass
   
-//   const handleDelete = (_id) => {
-//     console.log(_id)
-    
 
 
-// Swal.fire({
-//   title: "Are you sure?",
-//   text: "You won't be able to revert this!",
-//   icon: "warning",
-//   showCancelButton: true,
-//   confirmButtonColor: "#3085d6",
-//   cancelButtonColor: "#d33",
-//   confirmButtonText: "Yes, delete it!"
-// }).then((result) => {
-//   if (result.isConfirmed) {
+  
+ const handleDelete = async (_id) => {
+    console.log(_id);
 
+    const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    });
 
-    
+    if (result.isConfirmed) {
+        try {
+            const { data } = await axiosSecure.delete(`/assignment/${user?.email}`);
 
-//      fetch(`https://coffee-store-server-coral-alpha.vercel.app/coffee/${_id}`, {
-//       method:"DELETE",
-//     })
-//       .then(res => res.json())
-//       .then(data => {
-//         console.log(data)
-//         if(data.deletedCount>0
-//         ) {
-      
-//            Swal.fire({
-//       title: "Deleted!",
-//       text: "Your file has been deleted.",
-//       icon: "success"
-//     });
+            if (data.deletedCount > 0) {
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+                allAssData(); // Refresh the data
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error(error.message);
+        }
+    }
+};
 
-//           {
-//             const remaining = assignment.filter(ass => ass._id !== _id);
-//             setAssignment(remaining)
-// }
-
-// }
-    // })
-
-
-
-
-   
-//   }
-// });
-    
-   
-
-// }
-
-  // const handleUpdate = (_id) => {
-  //   console.log(_id)
-
-    
-
-  // }
   return (
     
     
@@ -97,6 +66,7 @@ const AssignmentCard = ({ass,assignment,setAssignment,allAssData}) => {
            <h2 className="card-title">Assignment Name: {title}</h2>
         <p><strong> Description: </strong>{description?.slice(0,80)}...</p>
         <p> <strong>Marks:</strong> {marks}</p>
+          <p> <strong>Due Date:</strong>{ format(new Date(dueDate),'P')}</p>
         <p><strong>Assignment Difficulty: </strong>{difficulty }</p>
        
        </div>

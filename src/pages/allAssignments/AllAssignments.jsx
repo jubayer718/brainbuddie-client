@@ -15,14 +15,14 @@ const AllAssignments = () => {
   }
   return (
     <div className="w-11/12 mx-auto my-12">
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 ">
+      {assignment.length===0?(<h2 className="text-4xl text-center font-bold">No Available Data</h2>):(<div className="grid grid-cols-1 gap-5 lg:grid-cols-2 ">
         {assignment.map(ass =><AssignmentCard
           key={ass?._id} ass={ass}
           assignment={assignment}
           setAssignment={setAssignment}
           allAssData={allAssData}
         ></AssignmentCard>)}
-    </div>
+    </div>)}
     </div>
   );
 };
