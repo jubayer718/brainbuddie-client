@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 const UpdateAssignment = () => {
   
   const { user, loading } = useAuth();
-  // const {id}=useParams()
+  const {id}=useParams()
   const navigate = useNavigate();
   if (loading) {
     return <Loading></Loading>
@@ -49,7 +49,7 @@ const UpdateAssignment = () => {
     e.preventDefault();
   
     try {
-      const { data } = await axiosSecure.patch(`/assignment/${user?.email}`, assignment);
+      const { data } = await axiosSecure.patch(`/assignment/${id}?email=${user?.email}`, assignment);
 
     if (data.modifiedCount > 0) {
       toast.success('update successful!!!', {

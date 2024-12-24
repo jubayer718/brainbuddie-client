@@ -10,7 +10,7 @@ const Details = () => {
  
   useEffect(() => {
     faceAllDate();
-  },[])
+  },[id])
   const faceAllDate =async () => {
     try {
       const { data } = await axiosSecure.get(`/assignment/details/${id}`);
