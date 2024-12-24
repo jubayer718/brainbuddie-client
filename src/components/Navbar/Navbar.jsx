@@ -57,7 +57,7 @@ const Navbar = () => {
                 <Link to='/create-assignment'>Create Assignment</Link>
               </li>
               <li>
-                <Link to='/my-assignment'>My Attempted Assignments</Link>
+                <Link to='/my-assignment'>My Submitted Assignments</Link>
               </li>
               
               <li className='mt-2'>
