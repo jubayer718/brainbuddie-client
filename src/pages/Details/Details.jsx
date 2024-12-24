@@ -8,6 +8,7 @@ const Details = () => {
   const { user } = useAuth();
   const { id } = useParams();
   const [assignment, setAssignment] = useState({});
+  console.log(assignment);
  
   useEffect(() => {
     faceAllDate();
@@ -27,13 +28,22 @@ const Details = () => {
   e.preventDefault(); // Prevent default form submission behavior
   const form = e.target; // Get the form element
   const link = form.link.value; // Access input field named 'link'
-  const note = form.note.value; // Access textarea named 'note'
+   const note = form.note.value; // Access textarea named 'note'
+   const assignmentId = assignment?._id;
+   const title = assignment?.title;
+   const marks = assignment?.marks;
 
    const submitData = {
      link,
      note,
      status: "pending",
-     email:user?.email,
+     email: user?.email,
+     assignmentId,
+     title,
+     marks,
+     
+
+
    }
   console.log(submitData);
    try {
