@@ -21,6 +21,9 @@ const AssignmentCard = ({ ass, allAssData }) => {
   const { _id, title, thumbnail, marks, dueDate, difficulty, description } = ass;
 
   const handleDelete = async (_id) => {
+    if (error?.response?.data === "Permission not allowed") {
+       return toast.error("Permission not allowed!");
+      } 
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -33,10 +36,10 @@ const AssignmentCard = ({ ass, allAssData }) => {
       });
 
       if (result.isConfirmed) {
-        const { data } = await axiosSecure.delete(`/assignment/${_id}`, {
-          params: { email: user?.email },
-        });
-
+        // const { data } = await axiosSecure.delete(`/assignment/${_id}`, {
+        //   params: { email: user?.email },
+        // });
+           const { data } = await axiosSecure.delete(`/assignment/${user?.email}`);
         if (data.deletedCount > 0) {
           Swal.fire({
             title: "Deleted!",
@@ -50,9 +53,7 @@ const AssignmentCard = ({ ass, allAssData }) => {
       setError(error);
       console.error("Error deleting assignment:", error);
       if (error?.response?.data === "Permission not allowed") {
-        toast.error("Permission not allowed!");
-      } else {
-        toast.error("An error occurred while deleting the assignment!");
+       return toast.error("Permission not allowed!");
       }
     }
   };

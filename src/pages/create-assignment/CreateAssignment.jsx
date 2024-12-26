@@ -20,6 +20,12 @@ const CreateAssignment = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+       // Validate description length
+    if (name === "description" && value.length < 20) {
+      alert("Description must be at least 20 characters long.");
+      return;
+    }
+
     setAssignment((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -30,6 +36,10 @@ const CreateAssignment = () => {
   const handleSubmit =async (e) => {
     e.preventDefault();
   
+    if (assignment.description.length < 20) {
+      toast.error("Description must be at least 20 characters long.");
+      return;
+    }
     try {
       // create a assignment
       await axiosSecure.post(`/assignment`, assignment)
@@ -68,7 +78,7 @@ Start today and make your learning journey more enriching! 🚀
       <input
         type="text"
         name="title"
-        value={assignment.title}
+        value={assignment?.title}
         onChange={handleChange}
         className="input input-bordered w-full mb-4"
         placeholder="Enter assignment title"
@@ -79,7 +89,7 @@ Start today and make your learning journey more enriching! 🚀
       <label className="block mb-2 font-semibold">Description:</label>
       <textarea
         name="description"
-        value={assignment.description}
+        value={assignment?.description}
         onChange={handleChange}
         className="textarea textarea-bordered w-full mb-4"
         placeholder="Enter assignment description"
@@ -91,7 +101,7 @@ Start today and make your learning journey more enriching! 🚀
       <input
         type="number"
         name="marks"
-        value={assignment.marks}
+        value={assignment?.marks}
         onChange={handleChange}
         className="input input-bordered w-full mb-4"
         placeholder="Enter marks"
@@ -104,7 +114,7 @@ Start today and make your learning journey more enriching! 🚀
       <input
         type="url"
         name="thumbnail"
-        value={assignment.thumbnail}
+        value={assignment?.thumbnail}
         onChange={handleChange}
         className="input input-bordered w-full mb-4"
         placeholder="Enter image URL"
@@ -115,7 +125,7 @@ Start today and make your learning journey more enriching! 🚀
       <label className="block mb-2 font-semibold">Difficulty Level:</label>
       <select
         name="difficulty"
-        value={assignment.difficulty}
+        value={assignment?.difficulty}
         onChange={handleChange}
         className="select select-bordered w-full mb-4"
         required
@@ -128,7 +138,7 @@ Start today and make your learning journey more enriching! 🚀
       {/* Due Date */}
       <label className="block mb-2 font-semibold">Due Date:</label>
       <DatePicker
-        selected={assignment.dueDate}
+        selected={assignment?.dueDate}
         onChange={handleDateChange}
         className="input input-bordered w-full mb-4"
         dateFormat="dd/MM/yyyy"

@@ -1,9 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { FaCloudMoon } from 'react-icons/fa';
+import { IoIosSunny } from 'react-icons/io';
 
 const Navbar = () => {
   const { user, handleLogOut } = useContext(AuthContext)
+  // State to track the current theme
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+    // Apply the theme to the <html> element
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme); // Save the theme to local storage
+  }, [theme]);
+    // Toggle theme
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
   return (
     <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
       <div className='flex-1'>
@@ -13,11 +26,16 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='flex-none'>
-        <ul className='menu menu-horizontal px-1'>
+        <ul className='menu menu-horizontal px-3'>
           <li>
             <Link to='/'>Home</Link>
           </li>
           <li><Link to='/all-assignment'>Assignments</Link></li>
+         
+          <button onClick={toggleTheme}>
+            {theme === "light" ? <FaCloudMoon /> : <IoIosSunny />}
+          </button>
+        
 
           {!user && (
             <li>
