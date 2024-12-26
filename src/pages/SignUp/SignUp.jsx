@@ -51,7 +51,7 @@ const [showPassword,setShowPassword]=useState(false)
   
       }).catch(err => {
         const errorCode = err.code;
-      console.log(errorCode)
+      // console.log(errorCode)
         setError({...error,errorCode})
       })
       

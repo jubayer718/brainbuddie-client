@@ -40,17 +40,17 @@ setLoading(true)
     
     const unsubscribe=onAuthStateChanged(auth,async (currentUser) => {
       setUser(currentUser);
-      console.log('state captured', currentUser?.email);
+      // console.log('state captured', currentUser?.email);
       if (currentUser?.email) {
         const user = { email: currentUser?.email };
         const { data } = await axiosSecure.post('/jwt', user, { withCredentials: true });
         setLoading(false)
-        console.log('login',data);
+        // console.log('login',data);
 
       } else {
         const { data } = await axiosSecure.post('/logout', {}, { withCredentials: true });
         setLoading(false)
-        console.log('logout',data);
+        // console.log('logout',data);
       }
       
     })

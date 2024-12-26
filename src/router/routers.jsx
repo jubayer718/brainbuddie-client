@@ -11,6 +11,7 @@ import AllAssignments from "../pages/allAssignments/AllAssignments";
 import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
 
 import Details from "../pages/Details/Details";
+import ErrorPage from "../pages/Error/ErrorPage";
 // import { axiosSecure } from "../Hooks/useAxiosSecure";
 
 
@@ -20,6 +21,7 @@ const routes =  createBrowserRouter ([
   {
     path: '/',
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
      {
         path: '/',

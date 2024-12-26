@@ -49,7 +49,7 @@ const CreateAssignment = () => {
       console.log(error);
 }
    
-    console.log("Assignment Details:", assignment);
+    // console.log("Assignment Details:", assignment);
 
   };
   return (

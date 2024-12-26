@@ -18,10 +18,10 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.response.use(response => {
       return response;
      }, error => {
-      console.log('error caught in interceptor', error);
+      // console.log('error caught in interceptor', error);
       if (error.response.status === 401 || error.response.status === 403) {
         toast.error(error.response.data)
-        console.log('need to logout user');
+        // console.log('need to logout user');
         // logout user
         // handleLogOut()
         //   .then(() => {
