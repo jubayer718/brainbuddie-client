@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const navigate=useNavigate()
@@ -26,8 +27,9 @@ const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
     handleSignIn(email, password)
       .then(result => {
         const user = result.user;
-          setUser(user);
-         navigate(from)
+        setUser(user);
+        navigate(from)
+        toast.success('login successful');
       }).catch(error => {
         // console.log(error)
         Swal.fire('invalid email')

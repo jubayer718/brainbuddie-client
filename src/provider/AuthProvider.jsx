@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 
 export const AuthContext = createContext();
@@ -44,11 +45,13 @@ setLoading(true)
       if (currentUser?.email) {
         const user = { email: currentUser?.email };
         const { data } = await axiosSecure.post('/jwt', user, { withCredentials: true });
+     
         setLoading(false)
         // console.log('login',data);
 
       } else {
         const { data } = await axiosSecure.post('/logout', {}, { withCredentials: true });
+  
         setLoading(false)
         // console.log('logout',data);
       }
