@@ -1,29 +1,37 @@
 import { useEffect, useState } from "react";
-import { axiosSecure } from "../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import AssignmentCard from "../../components/cards/AssignmentCard";
 
 
 const AllAssignments = () => {
   const [assignment, setAssignment] = useState([]);
+  const axiosSecure = useAxiosSecure();
   const [difficulty, setDifficulty] = useState(''); // State for filter
   const [search, setSearch] = useState(''); // State for search query
 
-  useEffect(() => {
-    allAssData();
-
-  },[difficulty,search])
+ 
   const allAssData = async () => {
-    const { data } = await axiosSecure.get('/all-ass',{
+    try {
+      const { data } = await axiosSecure.get('/all-ass', {
         params: { difficulty, search } // Pass filters and search query
       });
-    setAssignment(data||[])
-  }
-   const handleReset = () => {
+      setAssignment(data || []);
+    } catch (error) {
+      console.error("Error fetching assignments:", error);
+    }
+  };
+
+  useEffect(() => {
+    allAssData();
+  }, [difficulty, search, axiosSecure]);
+
+  const handleReset = () => {
     setDifficulty('');
-      setSearch('');
-  }
+    setSearch('');
+  };
+
   return (
-      <div className="w-11/12 mx-auto my-12">
+    <div className="w-11/12 mx-auto my-12">
       <div className="mb-4 flex gap-4">
         {/* Dropdown for difficulty filter */}
         <select
@@ -43,10 +51,9 @@ const AllAssignments = () => {
           placeholder="Search by title..."
           className="border rounded-lg p-2 w-full"
           value={search}
-
           onChange={(e) => setSearch(e.target.value)}
         />
-         <button onClick={handleReset} className='btn btn-warning'>Reset</button>
+        <button onClick={handleReset} className="btn btn-warning">Reset</button>
       </div>
 
       {assignment.length === 0 ? (
@@ -59,7 +66,7 @@ const AllAssignments = () => {
               ass={ass}
               assignment={assignment}
               setAssignment={setAssignment}
-              allAssData={allAssData}
+              allAssData={allAssData} // Ensure the function reference is passed correctly
             ></AssignmentCard>
           ))}
         </div>

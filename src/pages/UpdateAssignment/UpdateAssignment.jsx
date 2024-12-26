@@ -1,16 +1,17 @@
 
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import DatePicker from 'react-datepicker';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 import Loading from '../../components/Loading/Loading';
-import { axiosSecure } from '../../Hooks/useAxiosSecure';
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { toast } from 'react-toastify';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 const UpdateAssignment = () => {
-  
+    const axiosSecure = useAxiosSecure();
+
   const { user, loading } = useAuth();
   const {id}=useParams()
   const navigate = useNavigate();

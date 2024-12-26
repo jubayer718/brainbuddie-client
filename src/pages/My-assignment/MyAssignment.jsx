@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { toast } from 'react-toastify';
-import { axiosSecure } from '../../Hooks/useAxiosSecure';
-import { Link } from 'react-router-dom';
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+// import { Link } from 'react-router-dom';
 
 const MyAssignment = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const [assignments, setAssignment] = useState([]);
-  console.log(assignments);
+  // console.log(assignments);
   useEffect(() => {
+    const myAssignment = async() => {
+      try {
+        const { data } = await axiosSecure.get(`/assignment/${user?.email}`);
+        setAssignment(data)
+      }catch(error){toast.error(error.message)}
+    }
     myAssignment()
 
   },[user])
 
-  const myAssignment = async() => {
-    try {
-      const { data } = await axiosSecure.get(`/assignment/${user?.email}`);
-      setAssignment(data)
-    }catch(error){toast.error(error.message)}
-  }
 
   return (
     <div className='w-11/12 mx-auto my-12'>

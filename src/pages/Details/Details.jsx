@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { axiosSecure } from '../../Hooks/useAxiosSecure';
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { toast } from 'react-toastify';
 import useAuth from '../../Hooks/useAuth';
 
 const Details = () => {
+    const axiosSecure = useAxiosSecure();
+
   const { user } = useAuth();
   const { id } = useParams();
   const [assignment, setAssignment] = useState({});
-  console.log(assignment);
+  // console.log(assignment);
  
   useEffect(() => {
     faceAllDate();
@@ -45,7 +47,7 @@ const Details = () => {
 
 
    }
-  console.log(submitData);
+  // console.log(submitData);
    try {
      await axiosSecure.post('/submit',submitData);
      toast.success('submit successful')

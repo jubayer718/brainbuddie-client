@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
-import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const CreateAssignment = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
     const [assignment, setAssignment] = useState({
     title: "",
     description: "",

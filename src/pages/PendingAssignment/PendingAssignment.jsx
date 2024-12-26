@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 import useAuth from "../../Hooks/useAuth";
-import { axiosSecure } from "../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 
 const PendingAssignment = () => {
@@ -9,7 +9,7 @@ const PendingAssignment = () => {
   const [selectedAssignment, setSelectedAssignment] = useState(null);
   const modalRef = useRef(null); // Reference for the modal
   const { user } = useAuth();
-
+  const axiosSecure = useAxiosSecure();
   // Fetch pending assignments
   useEffect(() => {
     const fetchAssignments = async () => {
