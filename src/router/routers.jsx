@@ -12,7 +12,7 @@ import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
 
 import Details from "../pages/Details/Details";
 import ErrorPage from "../pages/Error/ErrorPage";
-// import { axiosSecure } from "../Hooks/useAxiosSecure";
+import { axiosSecure } from "../Hooks/useAxiosSecure";
 
 
 
@@ -43,18 +43,18 @@ const routes =  createBrowserRouter ([
       {
           path: '/updateAssignment/:id',
         element: <PrivateRoute><UpdateAssignment /></PrivateRoute>,  
-        loader:({params})=>fetch(`https://brain-buddies-server.vercel.app/updateAssignment/${params.id}`)
+        // loader:({params})=>fetch(`https://brain-buddies-server.vercel.app/updateAssignment/${params.id}`)
 
-    // loader: async ({ params }) => {
-    //     try {
-    //         const response = await axiosSecure.get(`/updateAssignment/${params.id}`);
-    //         return response.data; // Return the assignment data from the API
-    //     } catch (error) {
-    //         console.error('Error fetching assignment:', error);
-    //         // Handle error appropriately (e.g., redirect or show an error message)
-    //         throw new Response("Failed to load assignment data", { status: 500 });
-    //     }
-    // }
+    loader: async ({ params }) => {
+        try {
+            const response = await axiosSecure.get(`/updateAssignment/${params.id}`);
+            return response.data; // Return the assignment data from the API
+        } catch (error) {
+            console.error('Error fetching assignment:', error);
+            // Handle error appropriately (e.g., redirect or show an error message)
+            throw new Response("Failed to load assignment data", { status: 500 });
+        }
+    }
       }
       , {
         path: '/create-assignment',

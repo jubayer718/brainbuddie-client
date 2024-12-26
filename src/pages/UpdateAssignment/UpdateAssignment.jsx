@@ -19,6 +19,7 @@ const UpdateAssignment = () => {
     return <Loading></Loading>
   }
   const loadedData = useLoaderData();
+  console.log(loadedData);
 
 
     const [assignment, setAssignment] = useState({
@@ -48,7 +49,10 @@ const UpdateAssignment = () => {
 
   const handleSubmit =async (e) => {
     e.preventDefault();
-  
+    if (assignment.description.length < 20) {
+    return  toast.error("Description must be at least 20 characters long.");
+          
+  }
     try {
       const { data } = await axiosSecure.patch(`/assignment/${id}?email=${user?.email}`, assignment);
 

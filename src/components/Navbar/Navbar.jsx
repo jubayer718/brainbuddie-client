@@ -31,6 +31,11 @@ const Navbar = () => {
             <Link to='/'>Home</Link>
           </li>
           <li><Link to='/all-assignment'>Assignments</Link></li>
+           {
+            user&&(<li>
+            <Link to='/pendingAssignment'>Pending Assign</Link>
+          </li>)
+          }
          
           <button onClick={toggleTheme}>
             {theme === "light" ? <FaCloudMoon /> : <IoIosSunny />}
@@ -65,11 +70,7 @@ const Navbar = () => {
             >
                
     
-          {
-            user&&(<li>
-            <Link to='/pendingAssignment'>Pending Assign</Link>
-          </li>)
-          }
+         
 
               <li>
                 <Link to='/create-assignment'>Create Assignment</Link>

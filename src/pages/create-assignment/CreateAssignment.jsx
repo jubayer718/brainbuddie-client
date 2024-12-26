@@ -21,10 +21,10 @@ const CreateAssignment = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
        // Validate description length
-    if (name === "description" && value.length < 20) {
-      alert("Description must be at least 20 characters long.");
-      return;
-    }
+    // if (name === "description" && value.length < 20) {
+    //   toast.error("Description must be at least 20 characters long.");
+    //   return;
+    // }
 
     setAssignment((prev) => ({ ...prev, [name]: value }));
   };

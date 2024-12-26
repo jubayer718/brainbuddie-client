@@ -1,12 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import useAuth from "./useAuth";
 
-// import { useNavigate } from "react-router-dom";
-// import useAuth from "./useAuth";
-// import { AuthContext } from "../provider/AuthProvider";
 
- const axiosSecure = axios.create({
+
+ export const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials:true,
  })
@@ -27,7 +26,7 @@ const useAxiosSecure = () => {
         //   .then(() => {
         //   console.log('logout user');
         //   }).catch(err => {
-        //   console.log('error in interceptor',error);
+        //   console.log('error in interceptor',err);
         // })
         // redirect to login page
         // navigate('/signIn')
