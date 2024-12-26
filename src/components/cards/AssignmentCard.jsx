@@ -59,7 +59,7 @@ const AssignmentCard = ({ ass, allAssData }) => {
   };
 
   return (
-    <div className="card card-side bg-[#F5F4F1] shadow-xl">
+    <div className="card card-side md:flex-row lg:flex-row flex-col bg-[#F5F4F1] shadow-xl">
       <figure>
         <img
           className="h-64 w-full object-cover"
@@ -67,7 +67,7 @@ const AssignmentCard = ({ ass, allAssData }) => {
           alt="Assignment Thumbnail"
         />
       </figure>
-      <div className="flex items-center justify-between w-full p-5">
+      <div className="flex lg:flex-row md:flex-row flex-col items-center justify-between w-full p-5">
         <div className="space-y-3">
           <h2 className="card-title">Assignment Name: {title}</h2>
           <p>
@@ -85,16 +85,17 @@ const AssignmentCard = ({ ass, allAssData }) => {
             {difficulty}
           </p>
         </div>
-        <div className="flex flex-col gap-3">
-          <Link to={`/assignment/details/${_id}`} className="btn bg-[#D2B48C] text-white">
+        <div className="flex gap-8 my-4  lg:justify-normal lg:flex-col md:flex-col lg:gap-3">
+          <Link disabled={!user?.email} to={`/assignment/details/${_id}`} className={`${!user?.email?'disabled:hover:cursor-not-allowed':''} btn bg-[#D2B48C] text-white`}>
             <FaEye></FaEye>
           </Link>
-          <Link to={`/updateAssignment/${_id}`} className="btn bg-[#3C393B] text-white">
+          <Link    disabled={!user?.email} to={`/updateAssignment/${_id}`} className={`${!user?.email?'disabled:hover:cursor-not-allowed':''} btn bg-[#3C393B] text-white`}>
             <FaPen></FaPen>
           </Link>
           <button
+            disabled={!user?.email}
             onClick={() => handleDelete(_id)}
-            className="btn bg-[#EA4744] text-white"
+            className={`${!user?.email?'disabled:hover:cursor-not-allowed':''} btn bg-[#EA4744] text-white`}
           >
             <RiDeleteBin6Line></RiDeleteBin6Line>
           </button>

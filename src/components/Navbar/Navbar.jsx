@@ -21,8 +21,8 @@ const Navbar = () => {
     <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
-          <img className='w-auto rounded-full  h-10' src='https://i.ibb.co.com/V90R8xJ/brain-Buddies-logo.webp' alt='' />
-          <span className='font-bold'>BrainBuddies</span>
+          <img className='w-full rounded-full   h-10' src='https://i.ibb.co.com/V90R8xJ/brain-Buddies-logo.webp' alt='' />
+          <span className={`hidden md:block lg:block`}>BrainBuddies</span>
         </Link>
       </div>
       <div className='flex-none'>
