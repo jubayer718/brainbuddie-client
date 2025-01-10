@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { FaCloudMoon } from 'react-icons/fa';
 import { IoIosSunny } from 'react-icons/io';
@@ -20,21 +20,29 @@ const Navbar = () => {
   return (
     <div className='navbar fixed z-30 top-0 bg-gray-900 text-white px-8 shadow-sm container  mx-auto'>
       <div className='flex-1'>
-        <Link to='/' className='flex gap-2 items-center'>
+        <NavLink to='/' className='flex gap-2 items-center'>
           <img className='w-full rounded-full   h-10' src='https://i.ibb.co.com/V90R8xJ/brain-Buddies-logo.webp' alt='' />
-          <span className={`hidden md:block lg:block`}>BrainBuddies</span>
-        </Link>
+          <span className={`hidden  lg:block`}>BrainBuddies</span>
+        </NavLink>
       </div>
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-3'>
           <li>
-            <Link to='/'>Home</Link>
+            <NavLink to='/'>Home</NavLink>
           </li>
-          <li><Link to='/all-assignment'>Assignments</Link></li>
+          <li><NavLink to='/all-assignment'>Assignments</NavLink></li>
            {
-            user&&(<li>
-            <Link to='/pendingAssignment'>Pending Assign</Link>
-          </li>)
+            user && (<div className='flex'>
+               <li>
+                <NavLink to='/create-assignment'>Create Assignment</NavLink>
+              </li>
+              <li>
+                <NavLink to='/my-assignment'>My Submitted Assignments</NavLink>
+              </li>
+              <li>
+            <NavLink to='/pendingAssignment'>Pending Assign</NavLink>
+          </li>
+            </div>)
           }
          
           <button onClick={toggleTheme}>
@@ -50,7 +58,7 @@ const Navbar = () => {
         </ul>
 
         {user && (
-          <div className='dropdown dropdown-end z-50'>
+          <div className='dropdown text-black dropdown-end z-50'>
             <div
               tabIndex={0}
               role='button'
@@ -73,10 +81,10 @@ const Navbar = () => {
          
 
               <li>
-                <Link to='/create-assignment'>Create Assignment</Link>
+                <NavLink to='/create-assignment'>Create Assignment</NavLink>
               </li>
               <li>
-                <Link to='/my-assignment'>My Submitted Assignments</Link>
+                <NavLink to='/my-assignment'>My Submitted Assignments</NavLink>
               </li>
               
               <li className='mt-2'>
