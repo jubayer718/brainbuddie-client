@@ -32,7 +32,7 @@ const AllAssignments = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto my-12">
+    <div className="w-11/12 mx-auto mt-24 mb-12">
       <div className="mb-4 flex gap-4">
         {/* Dropdown for difficulty filter */}
         <select

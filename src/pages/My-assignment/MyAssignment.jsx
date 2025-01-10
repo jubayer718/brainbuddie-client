@@ -22,7 +22,7 @@ const MyAssignment = () => {
 
 
   return (
-    <div className='w-11/12 mx-auto my-12'>
+    <div className='w-11/12 mx-auto mt-20 mb-12 '>
       <h4 className='text-2xl'>my assignment: {assignments.length}</h4>
        <h1 className="text-2xl font-bold mb-4">My Submitted Assignments</h1>
       <table className="min-w-full bg-white border border-gray-300">

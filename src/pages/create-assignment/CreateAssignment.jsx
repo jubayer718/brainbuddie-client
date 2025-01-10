@@ -56,8 +56,8 @@ const CreateAssignment = () => {
 
   };
   return (
-    <div>
-     <div className="hero bg-base-200 min-h-screen">
+    <div className="">
+     <div className="hero mt-16 bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="">
             <Lottie animationData={createAss}></Lottie>
