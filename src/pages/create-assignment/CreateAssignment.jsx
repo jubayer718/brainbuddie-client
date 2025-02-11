@@ -4,6 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Lottie from "lottie-react";
+import createAss from '../../assets/lottie/createAssignment.json'
 
 const CreateAssignment = () => {
   const { user } = useAuth();
@@ -42,11 +44,12 @@ const CreateAssignment = () => {
     }
     try {
       // create a assignment
-      await axiosSecure.post(`/assignment`, assignment)
+       await axiosSecure.post(`/assignment`, assignment)
+     
       
     toast.success("Assignment created successfully!");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
 }
    
     // console.log("Assignment Details:", assignment);
@@ -56,22 +59,15 @@ const CreateAssignment = () => {
     <div>
      <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Welcome to Create Assignment </h1>
-      <p className="py-6">
-             Experience a new way of learning together with your friends.
-Here, you can create assignments, share them, and evaluate each other's work.
-Join us to learn in a more fun and effective way. We are here to support you in achieving your goals.
-
-Start today and make your learning journey more enriching! 🚀
-      </p>
-    </div>
+          <div className="">
+            <Lottie animationData={createAss}></Lottie>
+   </div>
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
      <form
       onSubmit={handleSubmit}
       className="max-w-xl mx-auto bg-white shadow-lg p-6 rounded-md"
     >
-      <h2 className="text-2xl font-bold mb-4">Create New Assignment</h2>
+       <h1 className="text-xl my-5 text-center font-bold">Welcome to Create Assignment </h1>
 
       {/* Title */}
       <label className="block mb-2 font-semibold">Title:</label>

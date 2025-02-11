@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 export const AuthContext = createContext();
@@ -10,7 +11,8 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading,setLoading]=useState(true)
   const provider = new GoogleAuthProvider()
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
+    
 
 
 
@@ -32,7 +34,12 @@ setLoading(true)
 
   const loginWithGoogle = () => {
    
- return signInWithPopup(auth,provider)
+    
+     
+  return  signInWithPopup(auth, provider)
+  
+   
+    
   }
   
 

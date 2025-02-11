@@ -3,6 +3,8 @@ import { FaEye, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../provider/AuthProvider';
+import registerLottieData from '../../assets/lottie/register.json'
+import Lottie from 'lottie-react';
 
 const SignUp = () => {
   const navigate=useNavigate()
@@ -45,7 +47,7 @@ const [showPassword,setShowPassword]=useState(false)
           .then((result) => {
           navigate("/")
           }).catch(error => {
-          console.log(error)
+          // console.log(error)
         })
         
   
@@ -68,7 +70,13 @@ const [showPassword,setShowPassword]=useState(false)
     }
   return (
     <div>
-      <div className='min-h-screen flex items-center justify-center '>
+      <div className='min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center '>
+
+         <div className="text-center lg:text-left w-96">
+          <Lottie animationData={registerLottieData}> 
+            
+     </Lottie>
+    </div>
       <div className="card bg-base-100 w-full max-w-lg shrink-0  border rounded-lg   p-8">
         <h3 className='font-bold text-2xl text-center'>Register your account</h3>
       <form onSubmit={handleSubmit} className="card-body">

@@ -19,7 +19,7 @@ const PendingAssignment = () => {
         );
         setAssignments(data);
       } catch (error) {
-        console.error("Error fetching pending assignments:", error);
+        // console.error("Error fetching pending assignments:", error);
       }
     };
 
@@ -44,7 +44,7 @@ const PendingAssignment = () => {
         modalRef.current.close(); // Explicitly close the modal
       }
     } catch (error) {
-      console.error("Error marking assignment:", error);
+      // console.error("Error marking assignment:", error);
       toast.error("Failed to mark assignment!");
     }
   };

@@ -5,6 +5,7 @@ import AssignmentCard from "../../components/cards/AssignmentCard";
 
 const AllAssignments = () => {
   const [assignment, setAssignment] = useState([]);
+  // console.log(assignment);
   const axiosSecure = useAxiosSecure();
   const [difficulty, setDifficulty] = useState(''); // State for filter
   const [search, setSearch] = useState(''); // State for search query
@@ -17,7 +18,7 @@ const AllAssignments = () => {
       });
       setAssignment(data || []);
     } catch (error) {
-      console.error("Error fetching assignments:", error);
+      // console.error("Error fetching assignments:", error);
     }
   };
 

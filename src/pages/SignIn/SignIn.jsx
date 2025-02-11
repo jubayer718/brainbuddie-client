@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
-
+import LottieLogin from "../../assets/lottie/login.json"
+import Lottie from "lottie-react";
 const SignIn = () => {
   const navigate=useNavigate()
 const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
@@ -36,18 +37,28 @@ const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
     })
   }
   const handleLoginWithGoogle = () => {
-  
+    loginWithGoogle()
+      .then(res => {
+   navigate(from)
+    toast.success('login successful')
+    
+     })
 }
   const handleForgetPass = () => {
     
   }
   return (
      <div>
-     <div className='min-h-screen flex items-center justify-center '>
+     <div className='min-h-screen flex flex-col lg:flex-row items-center justify-center '>
       
-      <div className="card bg-base-100 w-full max-w-lg border rounded-lg shrink-0  p-10">
-        <h3 className='font-bold text-2xl text-center'>Login your account</h3>
-      <form onSubmit={handleSubmit} className="card-body ">
+       <div className="text-center lg:text-left  w-96">
+          <Lottie animationData={LottieLogin}> 
+            
+     </Lottie>
+          </div>
+      <div className="card bg-base-100 w-full max-w-lg border rounded-lg shrink-0  p-10 ">
+          <h2 className="text-4xl text-center font-bold mt-4">Welcome to login</h2>
+      <form onSubmit={handleSubmit} className="card-body">
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
@@ -80,7 +91,7 @@ const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
 
 
         <h3 className='text-center font-semibold'>Don't have an account? <Link to="/signUp"  className='text-red-500'>Register</Link></h3>
-        <button onClick={loginWithGoogle} className="w-full btn font-bold text-xl my-3"><FaGoogle></FaGoogle> Login with google</button>
+        <button onClick={handleLoginWithGoogle} className="w-full btn font-bold text-xl my-3"><FaGoogle></FaGoogle> Login with google</button>
         </div>
     </div>
     </div>

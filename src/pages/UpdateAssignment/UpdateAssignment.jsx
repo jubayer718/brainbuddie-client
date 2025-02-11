@@ -7,7 +7,9 @@ import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { toast } from 'react-toastify';
+import Lottie from 'lottie-react';
 // import Swal from 'sweetalert2';
+import updateAnimate from '../../assets/lottie/update.json'
 
 const UpdateAssignment = () => {
     const axiosSecure = useAxiosSecure();
@@ -19,7 +21,7 @@ const UpdateAssignment = () => {
     return <Loading></Loading>
   }
   const loadedData = useLoaderData();
-  console.log(loadedData);
+ 
 
 
     const [assignment, setAssignment] = useState({
@@ -74,22 +76,17 @@ const UpdateAssignment = () => {
     <div>
          <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Welcome to Update Assignment </h1>
-          <p className="py-6">
-                 Experience a new way of learning together with your friends.
-    Here, you can create assignments, share them, and evaluate each other's work.
-    Join us to learn in a more fun and effective way. We are here to support you in achieving your goals.
-    
-    Start today and make your learning journey more enriching! 🚀
-          </p>
+          <div>
+            <Lottie animationData={updateAnimate}>
+
+            </Lottie>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
          <form
           onSubmit={handleSubmit}
           className="max-w-xl mx-auto bg-white shadow-lg p-6 rounded-md"
         >
-          <h2 className="text-2xl font-bold mb-4">Update Assignment</h2>
+          <h1 className="text-xl text-center font-bold">Welcome to Update Assignment </h1>
     
           {/* Title */}
           <label className="block mb-2 font-semibold">Title:</label>
