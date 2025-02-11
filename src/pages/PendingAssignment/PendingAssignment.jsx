@@ -8,7 +8,10 @@ const PendingAssignment = () => {
   const [assignments, setAssignments] = useState([]);
   const [selectedAssignment, setSelectedAssignment] = useState(null);
   const modalRef = useRef(null); // Reference for the modal
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  if (loading) {
+    return <span className="loading loading-spinner text-error "></span>
+  }
   const axiosSecure = useAxiosSecure();
   // Fetch pending assignments
   useEffect(() => {

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import AssignmentCard from "../../components/cards/AssignmentCard";
+import useAuth from "../../Hooks/useAuth";
 
 
 const AllAssignments = () => {
+  const { loading } = useAuth();
+  
   const [assignment, setAssignment] = useState([]);
   // console.log(assignment);
   const axiosSecure = useAxiosSecure();
   const [difficulty, setDifficulty] = useState(''); // State for filter
   const [search, setSearch] = useState(''); // State for search query
-
  
   const allAssData = async () => {
     try {
@@ -32,7 +34,7 @@ const AllAssignments = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto my-12">
+    <div className="w-11/12 mx-auto my-20">
       <div className="mb-4 flex gap-4">
         {/* Dropdown for difficulty filter */}
         <select
@@ -57,9 +59,7 @@ const AllAssignments = () => {
         <button onClick={handleReset} className="btn btn-warning">Reset</button>
       </div>
 
-      {assignment.length === 0 ? (
-        <h2 className="text-4xl text-center font-bold">No Available Data</h2>
-      ) : (
+      {loading?(<div className="flex items-center justify-center"><span className="loading loading-spinner text-error "></span></div>):assignment.length === 0 ? ( <h2 className="text-4xl text-center font-bold">No Available Data</h2>)  :  (
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           {assignment.map((ass) => (
             <AssignmentCard

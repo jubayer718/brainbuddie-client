@@ -5,9 +5,12 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 // import { Link } from 'react-router-dom';
 
 const MyAssignment = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [assignments, setAssignment] = useState([]);
+  if (loading) {
+    return <span className="loading loading-spinner text-error"></span>
+  }
   // console.log(assignments);
   useEffect(() => {
     const myAssignment = async() => {
@@ -22,8 +25,8 @@ const MyAssignment = () => {
 
 
   return (
-    <div className='w-11/12 mx-auto my-12'>
-      <h4 className='text-2xl'>my assignment: {assignments.length}</h4>
+    <div className='w-11/12 mx-auto my-20'>
+      {/* <h4 className='text-2xl'>my assignment: {assignments.length}</h4> */}
        <h1 className="text-2xl font-bold mb-4">My Submitted Assignments</h1>
       <table className="min-w-full bg-white border border-gray-300">
         <thead>
