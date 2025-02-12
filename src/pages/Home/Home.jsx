@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Import Font Awesome icons
 import FeaturedAssignments from '../../components/TopAssignment/TopAssignment';
 import Testimonials from '../../components/Testimonials/Testimonials';
+import PlatformFeature from '../../components/platformFeature/PlatformFeature';
 
 const Home = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -26,68 +27,7 @@ const Home = () => {
 
 
       {/* Features section */}
-       <section className="py-12 px-6 my-12 bg-gray-100">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-8">Platform Features</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          
-          {/* Feature 1: Create and Share Assignment */}
-          <div className="bg-white p-6 rounded-lg shadow-lg space-y-3">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">1. Create and Share Assignments</h3>
-            <p className="text-gray-600">
-              Creating assignments is now easier! Create and share them with your friends.
-              </p>
-              <button type='button' className='btn btn-neutral'>See More</button>
-          </div>
-
-          {/* Feature 2: Grade Friend's Assignment */}
-          <div className="bg-white p-6 rounded-lg shadow-lg space-y-3">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">2. Grade Friend's Assignments</h3>
-            <p className="text-gray-600">
-              Evaluate each assignment and provide constructive feedback. This helps in improvement.
-              </p>
-               <button type='button' className='btn btn-neutral'>See More</button>
-          </div>
-
-          {/* Feature 3: Real-Time Group Chat */}
-          <div className="bg-white p-6 rounded-lg shadow-lg space-y-3">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">3. Real-Time Group Chat</h3>
-            <p className="text-gray-600">
-              Keep your team connected during study sessions with group chat and instant discussions.
-              </p>
-               <button type='button' className='btn btn-neutral'>See More</button>
-          </div>
-
-          {/* Feature 4: Deadline Reminder and Notifications */}
-          <div className="bg-white p-6 rounded-lg shadow-lg space-y-3">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">4. Deadline Reminders and Notifications</h3>
-            <p className="text-gray-600">
-              Never miss a deadline! Stay updated with important notifications.
-              </p>
-               <button type='button' className='btn btn-neutral'>See More</button>
-          </div>
-
-          {/* Feature 5: Personal Profile and Progress Tracker */}
-          <div className="bg-white p-6 rounded-lg shadow-lg space-y-3">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">5. Personal Profile and Track Achievements</h3>
-            <p className="text-gray-600">
-              Track your assignment submissions and grades and stay ready for improvement.
-              </p>
-               <button type='button' className='btn btn-neutral'>See More</button>
-          </div>
-
-          {/* Feature 6: Fun and Learn with Friends */}
-          <div className="bg-white p-6 rounded-lg shadow-lg space-y-3">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">6. Have Fun and Learn with Friends</h3>
-            <p className="text-gray-600">
-              Learning becomes more enjoyable with group study, sharing, and evaluation.
-              </p>
-               <button type='button' className='btn btn-neutral'>See More</button>
-          </div>
-
-        </div>
-      </div>
-      </section>
+       <PlatformFeature></PlatformFeature>
       
       {/* top assignment section*/}
       <FeaturedAssignments></FeaturedAssignments>

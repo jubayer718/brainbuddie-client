@@ -13,6 +13,7 @@ import UpdateAssignment from "../pages/UpdateAssignment/UpdateAssignment";
 import Details from "../pages/Details/Details";
 import ErrorPage from "../pages/Error/ErrorPage";
 import { axiosSecure } from "../Hooks/useAxiosSecure";
+import FeatureDetails from "../pages/FeatureDetails/FeatureDetails";
 
 
 
@@ -38,6 +39,11 @@ const routes =  createBrowserRouter ([
       {
         path: '/assignment/details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
+      }, {
+        path: '/feature/details/:id',
+        element:<PrivateRoute> <FeatureDetails></FeatureDetails></PrivateRoute>,
+        loader:({params})=>fetch(`http://localhost:9000/feature/details/${params.id}`)
+
       },
       
       {
