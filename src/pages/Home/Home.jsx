@@ -27,6 +27,7 @@ const Home = () => {
 
 
       {/* Features section */}
+       <h2 className="text-4xl font-bold mb-8 text-center">👉Platform Featured </h2>
        <PlatformFeature></PlatformFeature>
       
       {/* top assignment section*/}
