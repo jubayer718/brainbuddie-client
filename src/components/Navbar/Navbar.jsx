@@ -50,7 +50,7 @@ const Navbar = () => {
         </ul>
 
         {user && (
-          <div className='dropdown text-black dropdown-end z-50'>
+          <div className='dropdown text-gray-500 dropdown-end z-50'>
             <div
               tabIndex={0}
               role='button'

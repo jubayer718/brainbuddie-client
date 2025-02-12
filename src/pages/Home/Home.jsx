@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Import Font Awesome icons
+import FeaturedAssignments from '../../components/TopAssignment/TopAssignment';
+import Testimonials from '../../components/Testimonials/Testimonials';
 
 const Home = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -87,6 +89,10 @@ const Home = () => {
       </div>
       </section>
       
+      {/* top assignment section*/}
+      <FeaturedAssignments></FeaturedAssignments>
+      {/* testimonials section */}
+      <Testimonials></Testimonials>
 
       {/* FAQ section */}
 
