@@ -66,7 +66,7 @@ const Details = () => {
 
   return (
     <div>
-      <div className="flex flex-col lg:flex-row  items-center gap-5 bg-indigo-300 shadow-lg rounded-lg p-4 space-y-3 w-11/12 mx-auto my-12">
+      <div className="flex flex-col lg:flex-row  items-center gap-5 bg-indigo-300 text-gray-700 shadow-lg rounded-lg p-4 space-y-3 w-11/12 mx-auto my-20">
      
       <div>
         <img  src={assignment.thumbnail} alt="Thumbnail" className="lg:w-[300px] lg:h-[200px] object-cover" />
