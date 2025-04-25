@@ -69,7 +69,7 @@ const Footer = () => {
           <div className="form-control w-full md:w-1/2  mx-auto">
             <label className="input-group">
               <input type="email" placeholder="Enter your email" className="input input-bordered w-full" />
-              <button className="btn btn-primary">Subscribe</button>
+              <button className="btn mt-2 btn-primary">Subscribe</button>
             </label>
           </div>
           <p className="text-gray-400 text-sm mt-2">

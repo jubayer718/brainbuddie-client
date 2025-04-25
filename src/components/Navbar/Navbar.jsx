@@ -50,7 +50,7 @@ const Navbar = () => {
         </ul>
 
         {user && (
-          <div className='dropdown text-gray-500 dropdown-end z-50'>
+          <div className='dropdown  dropdown-end z-50'>
             <div
               tabIndex={0}
               role='button'
@@ -66,23 +66,23 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+              className='menu menu-sm dropdown-content mt-3 z-30 bg-base-100 p-2 shadow border rounded-box w-52'
             >
                
     
          
 
-              <li>
+              <li  className={`${theme==='light'&& 'text-black'}`}>
                 <Link to='/create-assignment'>Create Assignment</Link>
               </li>
-              <li>
+              <li className={`${theme==='light'&& 'text-black'}`}>
                 <Link to='/my-assignment'>My Submitted Assignments</Link>
               </li>
               
               <li className='mt-2'>
                 <button
                   onClick={handleLogOut}
-                  className='bg-gray-200 block text-center'
+                  className='btn block text-center'
                 >
                   Logout
                 </button>

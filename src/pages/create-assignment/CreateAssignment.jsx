@@ -65,7 +65,7 @@ const CreateAssignment = () => {
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
      <form
       onSubmit={handleSubmit}
-      className="max-w-xl mx-auto bg-white shadow-lg p-6 rounded-md"
+      className="max-w-xl mx-auto  shadow-lg p-6 rounded-md"
     >
        <h1 className="text-xl my-5 text-center font-bold">Welcome to Create Assignment </h1>
 
@@ -143,7 +143,7 @@ const CreateAssignment = () => {
       />
 
       {/* Submit Button */}
-      <button type="submit" className="btn bg-indigo-400 w-full">
+      <button type="submit" className="btn  w-full">
         Create Assignment
       </button>
     </form>

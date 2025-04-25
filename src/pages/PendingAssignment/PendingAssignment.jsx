@@ -61,9 +61,9 @@ const PendingAssignment = () => {
   return (
     <div className="w-11/12 mx-auto my-8">
       <h1 className="text-2xl font-bold mb-4">Pending Assignments</h1>
-      <table className="min-w-full bg-white border">
+      <table className="min-w-full  border">
         <thead>
-          <tr className="bg-indigo-300 text-left">
+          <tr className=" text-left">
             <th className="py-2 px-4 border">Title</th>
             <th className="py-2 px-4 border">Marks</th>
             <th className="py-2 px-4 border">Examinee</th>
@@ -72,13 +72,13 @@ const PendingAssignment = () => {
         </thead>
         <tbody>
           {assignments?.map?.((assignment) => (
-            <tr key={assignment?._id} className="hover:bg-indigo-100">
-              <td className="py-2 px-4 border">{assignment?.title}</td>
-              <td className="py-2 px-4 border">{assignment?.marks}</td>
-              <td className="py-2 px-4 border">{assignment?.email}</td>
-              <td className="py-2 px-4 border">
+            <tr key={assignment?._id} className="hover:bg-indigo-100 hover:text-black">
+              <td className="py-2 px-4 border ">{assignment?.title}</td>
+              <td className="py-2 px-4 border ">{assignment?.marks}</td>
+              <td className="py-2 px-4 border ">{assignment?.email}</td>
+              <td className="py-2 px-4 border ">
                 <button
-                  className="btn bg-indigo-400"
+                  className="btn "
                   onClick={() => handleOpenModal(assignment)}
                 >
                   Give Mark
