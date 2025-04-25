@@ -38,16 +38,16 @@ const Home = () => {
       {/* FAQ section */}
 
 
- <section className="py-12 px-6 bg-gray-100">
+ <section className="py-12 px-6 ">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h2>
+        <h2 className="text-4xl font-bold  mb-8">Frequently Asked Questions</h2>
 
         <div className="space-y-4">
           {/* FAQ 1 */}
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className=" p-6 rounded-lg border">
             <button
               onClick={() => toggleFAQ(0)}
-              className="w-full text-left text-xl font-semibold text-gray-700 mb-4 flex items-center justify-between focus:outline-none"
+              className="w-full text-left text-xl font-semibold  mb-4 flex items-center justify-between focus:outline-none"
             >
               1. How can I create and share assignments with my friends?
               {/* Arrow icon that changes based on the FAQ state */}
@@ -65,10 +65,10 @@ const Home = () => {
           </div>
 
           {/* FAQ 2 */}
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className=" p-6 rounded-lg border">
             <button
               onClick={() => toggleFAQ(1)}
-              className="w-full text-left text-xl font-semibold text-gray-700 mb-4 flex items-center justify-between focus:outline-none"
+              className="w-full text-left text-xl font-semibold  mb-4 flex items-center justify-between focus:outline-none"
             >
               2. How do I grade my friends' assignments?
               {activeIndex === 1 ? (
@@ -85,10 +85,10 @@ const Home = () => {
           </div>
 
           {/* FAQ 3 */}
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className=" p-6 rounded-lg border">
             <button
               onClick={() => toggleFAQ(2)}
-              className="w-full text-left text-xl font-semibold text-gray-700 mb-4 flex items-center justify-between focus:outline-none"
+              className="w-full text-left text-xl font-semibold  mb-4 flex items-center justify-between focus:outline-none"
             >
               3. How does the real-time group chat work?
               {activeIndex === 2 ? (
@@ -105,10 +105,10 @@ const Home = () => {
           </div>
 
           {/* FAQ 4 */}
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className=" p-6 rounded-lg border">
             <button
               onClick={() => toggleFAQ(3)}
-              className="w-full text-left text-xl font-semibold text-gray-700 mb-4 flex items-center justify-between focus:outline-none"
+              className="w-full text-left text-xl font-semibold  mb-4 flex items-center justify-between focus:outline-none"
             >
               4. Will I be reminded of assignment deadlines?
               {activeIndex === 3 ? (
@@ -125,10 +125,10 @@ const Home = () => {
           </div>
 
           {/* FAQ 5 */}
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className=" p-6 rounded-lg border">
             <button
               onClick={() => toggleFAQ(4)}
-              className="w-full text-left text-xl font-semibold text-gray-700 mb-4 flex items-center justify-between focus:outline-none"
+              className="w-full text-left text-xl font-semibold  mb-4 flex items-center justify-between focus:outline-none"
             >
               5. How can I track my progress and achievements?
               {activeIndex === 4 ? (
@@ -145,10 +145,10 @@ const Home = () => {
           </div>
 
           {/* FAQ 6 */}
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className=" p-6 rounded-lg border">
             <button
               onClick={() => toggleFAQ(5)}
-              className="w-full text-left text-xl font-semibold text-gray-700 mb-4 flex items-center justify-between focus:outline-none"
+              className="w-full text-left text-xl font-semibold  mb-4 flex items-center justify-between focus:outline-none"
             >
               6. Can I have fun while studying with friends?
               {activeIndex === 5 ? (

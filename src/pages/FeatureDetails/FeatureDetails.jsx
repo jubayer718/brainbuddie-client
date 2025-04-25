@@ -3,7 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 const FeatureDetails = () => {
   const navigate = useNavigate();
   const feature = useLoaderData();
-  console.log(feature);
+  // console.log(feature);
 
 
   return (
