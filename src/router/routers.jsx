@@ -42,7 +42,7 @@ const routes =  createBrowserRouter ([
       }, {
         path: '/feature/details/:id',
         element:<PrivateRoute> <FeatureDetails></FeatureDetails></PrivateRoute>,
-        loader:({params})=>fetch(`https://brain-buddies-server.vercel.app//feature/details/${params.id}`)
+        loader:({params})=>fetch(`https://brain-buddies-server.vercel.app/feature/details/${params.id}`)
 
       },
       
