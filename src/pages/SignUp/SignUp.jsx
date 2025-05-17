@@ -70,7 +70,7 @@ const [showPassword,setShowPassword]=useState(false)
     }
   return (
     <div>
-      <div className='min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center '>
+      <div className='min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center  mt-20'>
 
          <div className="text-center lg:text-left w-96">
           <Lottie animationData={registerLottieData}> 
@@ -84,7 +84,7 @@ const [showPassword,setShowPassword]=useState(false)
           <label className="label">
             <span className="label-text">Your Name</span>
           </label>
-              <input type="text" name="name" placeholder="Enter your  Name" className=" border-none rounded-none  input input-border " required />
+              <input type="text" name="name" placeholder="Enter your Name" className=" border-none rounded-none bg-neutral  input input-border " required />
               {/* {
                 error.name&&  <label className="label text-xs text-red-600">
           {error.name}
@@ -95,13 +95,13 @@ const [showPassword,setShowPassword]=useState(false)
           <label className="label">
             <span className="label-text">Photo URL</span>
           </label>
-          <input type="text" name="photo" placeholder="Enter your Photo URL" className="border-none rounded-none  input input-border border" required />
+          <input type="text" name="photo" placeholder="Enter your Photo URL" className="border-none rounded-none bg-neutral  input input-border border" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" name="email" placeholder="Enter your email" className="border-none rounded-none  input input-border border" required />
+          <input type="email" name="email" placeholder="Enter your email" className="border-none rounded-none  input input-border bg-neutral border" required />
             {
 
                error.errorCode && <p className="text-red-600 "> {error.errorCode}</p>
@@ -113,8 +113,8 @@ const [showPassword,setShowPassword]=useState(false)
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-              <input type={showPassword?'text':'password'} name="password" placeholder="password" className=" border-none rounded-none input input-bordered" required />
-              <button or borderick={()=>setShowPassword(!showPassword)} className=" absolute top-14 right-4"><FaEye></FaEye></button>
+              <input type={showPassword?'text':'password'} name="password" placeholder="password" className=" border-none bg-neutral rounded-none input input-bordered" required />
+              <button or borderick={()=>setShowPassword(!showPassword)} className=" absolute top-14 right-4"><FaEye className=' text-gray-500'></FaEye></button>
               {
                 valid && <p className="text-red-500">{ valid}</p>
           }

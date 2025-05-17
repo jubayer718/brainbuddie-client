@@ -56,6 +56,9 @@ const AllAssignments = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <select name="" id="">
+          <option value="mark">Sort by mark</option>
+        </select>
         <button onClick={handleReset} className="btn btn-warning">Reset</button>
       </div>
 

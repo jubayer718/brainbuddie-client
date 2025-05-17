@@ -68,7 +68,7 @@ const AssignmentCard = ({ ass, allAssData }) => {
 
 
   return (
-    <div className="card card-side md:flex-row lg:flex-row flex-col bg-[#F5F4F1] shadow-xl">
+    <div className="card card-side md:flex-row lg:flex-row flex-col border shadow-xl">
       <figure>
         <img
           className="h-72 w-full rounded-xl lg:ml-3 object-cover"

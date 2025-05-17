@@ -7,7 +7,7 @@ const PlatformFeature = () => {
 
   const [features, setFeatures] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:9000/feature')
+    fetch('https://brain-buddies-server.vercel.app/feature')
       .then(res => res.json())
     .then(data=>setFeatures(data))
   },[])

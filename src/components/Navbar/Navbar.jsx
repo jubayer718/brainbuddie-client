@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { FaCloudMoon } from 'react-icons/fa';
 import { IoIosSunny } from 'react-icons/io';
@@ -28,12 +28,12 @@ const Navbar = () => {
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-3'>
           <li>
-            <Link to='/'>Home</Link>
+            <NavLink to='/'>Home</NavLink>
           </li>
-          <li><Link to='/all-assignment'>Assignments</Link></li>
+          <li><NavLink to='/all-assignment'>Assignments</NavLink></li>
            {
             user&&(<li>
-            <Link to='/pendingAssignment'>Pending Assign</Link>
+            <NavLink to='/pendingAssignment'>Pending Assign</NavLink>
           </li>)
           }
          
