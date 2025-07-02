@@ -5,6 +5,8 @@ import { FaGoogle } from "react-icons/fa";
 import { toast } from "react-toastify";
 import LottieLogin from "../../assets/lottie/login.json"
 import Lottie from "lottie-react";
+import {easeIn, easeInOut, motion} from "motion/react"
+
 const SignIn = () => {
   const navigate=useNavigate()
 const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
@@ -51,12 +53,19 @@ const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
      <div>
      <div className='min-h-screen flex flex-col lg:flex-row items-center justify-center  mt-20'>
       
-       <div className="text-center lg:text-left  w-96">
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          animate={{x:0 , opacity:1, transition:{duration:1.5, ease: easeInOut}}}
+          
+          className="text-center lg:text-left  w-96">
           <Lottie animationData={LottieLogin}> 
             
      </Lottie>
-          </div>
-      <div className="card bg-base-100 w-full max-w-lg border rounded-lg shrink-0  p-10 ">
+          </motion.div>
+        <motion.div
+           initial={{ x: 50, opacity: 0 }}
+           animate={{x:0 , opacity:1, transition:{duration:1.5, ease: easeInOut}}}
+          className="card bg-base-100 w-full max-w-lg border rounded-lg shrink-0  p-10 ">
           <h2 className="text-4xl text-center font-bold mt-4">Welcome to login</h2>
       <form onSubmit={handleSubmit} className="card-body">
         <div className="form-control">
@@ -92,7 +101,7 @@ const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
 
         <h3 className='text-center font-semibold'>Don't have an account? <Link to="/signUp"  className='text-red-500'>Register</Link></h3>
         <button onClick={handleLoginWithGoogle} className="w-full btn font-bold text-xl my-3"><FaGoogle></FaGoogle> Login with google</button>
-        </div>
+        </motion.div>
     </div>
     </div>
   );
