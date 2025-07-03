@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import LottieLogin from "../../assets/lottie/login.json"
 import Lottie from "lottie-react";
 import {easeIn, easeInOut, motion} from "motion/react"
+import { Helmet } from "react-helmet";
 
 const SignIn = () => {
   const navigate=useNavigate()
@@ -50,7 +51,11 @@ const {handleSignIn,setUser,loginWithGoogle}=useContext(AuthContext)
     
   }
   return (
-     <div>
+    <div>
+      <Helmet>
+        <title>Signin | BrainBuddies</title>
+        <meta name="description" content="welcome to signin page of BrainBuddies"/>
+      </Helmet>
      <div className='min-h-screen flex flex-col lg:flex-row items-center justify-center  mt-20'>
       
         <motion.div

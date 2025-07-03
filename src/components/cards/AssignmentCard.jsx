@@ -8,8 +8,7 @@ import useAuth from "../../Hooks/useAuth";
 import Loading from "../Loading/Loading";
 import { toast } from "react-toastify";
 import { format } from "date-fns";
-// import { axiosSecure } from "../../Hooks/useAxiosSecure";
-// import axios from "axios";
+import {easeInOut, motion} from "motion/react"
 
 const AssignmentCard = ({ ass, allAssData }) => {
   const axiosSecure = useAxiosSecure();
@@ -68,7 +67,10 @@ const AssignmentCard = ({ ass, allAssData }) => {
 
 
   return (
-    <div className="card card-side md:flex-row lg:flex-row flex-col border shadow-xl">
+    <motion.div
+      initial={{ y: 20, }}
+      whileInView={{y:0, transition:{duration:2, ease:easeInOut} }}
+      className="card card-side md:flex-row lg:flex-row flex-col border shadow-xl">
       <figure>
         <img
           className="h-72 w-full rounded-xl lg:ml-3 object-cover"
@@ -110,7 +112,7 @@ const AssignmentCard = ({ ass, allAssData }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

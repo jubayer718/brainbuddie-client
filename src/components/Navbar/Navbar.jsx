@@ -3,20 +3,12 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { FaCloudMoon } from 'react-icons/fa';
 import { IoIosSunny } from 'react-icons/io';
+import useTheme from '../../Hooks/useTheme';
 
 const Navbar = () => {
   const { user, handleLogOut } = useContext(AuthContext)
-  // State to track the current theme
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-    // Apply the theme to the <html> element
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme); // Save the theme to local storage
-  }, [theme]);
-    // Toggle theme
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const { theme, toggleTheme } = useTheme()
+  
   return (
     <div className='navbar fixed z-30 top-0 bg-gray-900 text-white px-8 shadow-sm container  mx-auto'>
       <div className='flex-1'>

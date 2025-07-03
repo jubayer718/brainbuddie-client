@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import AssignmentCard from "../../components/cards/AssignmentCard";
 import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 
 const AllAssignments = () => {
@@ -34,7 +35,12 @@ const AllAssignments = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto my-20">
+    <>
+      <Helmet>
+        <title>All Assignment | Brain Buddies</title>
+        <meta name="description" content="welcome to all assignment page of Brain Buddies"/>
+      </Helmet>
+     <div className="w-11/12 mx-auto my-20">
       <div className="mb-4 flex gap-4">
         {/* Dropdown for difficulty filter */}
         <select
@@ -75,7 +81,7 @@ const AllAssignments = () => {
           ))}
         </div>
       )}
-    </div>
+    </div></>
   );
 };
 

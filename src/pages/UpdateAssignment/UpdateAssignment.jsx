@@ -10,9 +10,11 @@ import { toast } from 'react-toastify';
 import Lottie from 'lottie-react';
 // import Swal from 'sweetalert2';
 import updateAnimate from '../../assets/lottie/update.json'
+import useTheme from '../../Hooks/useTheme';
 
 const UpdateAssignment = () => {
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
+  const {theme} = useTheme()
 
   const { user, loading } = useAuth();
   const {id}=useParams()
@@ -73,7 +75,7 @@ const UpdateAssignment = () => {
 
   };
   return (
-    <div>
+    <div className='my-16'>
          <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
           <div>
@@ -84,7 +86,7 @@ const UpdateAssignment = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
          <form
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto bg-white shadow-lg p-6 rounded-md"
+          className="max-w-xl mx-auto  shadow-lg p-6 rounded-md"
         >
           <h1 className="text-xl text-center font-bold">Welcome to Update Assignment </h1>
     
@@ -162,9 +164,9 @@ const UpdateAssignment = () => {
           />
     
           {/* Submit Button */}
-          <button  type="submit" className="btn bg-indigo-400 w-full">
+          <button  type="submit" className={`btn ${theme === "light"?"bg-orange-700 text-white":"bg-orange-500 text-black"} w-full`}>
             Update Assignment
-          </button>
+              </button>
         </form>
         </div>
       </div>

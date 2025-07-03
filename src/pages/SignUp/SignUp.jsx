@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../provider/AuthProvider';
 import registerLottieData from '../../assets/lottie/register.json'
 import Lottie from 'lottie-react';
+import {easeInOut, motion} from "motion/react"
 
 const SignUp = () => {
   const navigate=useNavigate()
@@ -72,12 +73,20 @@ const [showPassword,setShowPassword]=useState(false)
     <div>
       <div className='min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center  mt-20'>
 
-         <div className="text-center lg:text-left w-96">
+        <motion.div
+         
+         initial={{ x: 50, opacity: 0 }}
+         animate={{x:0 , opacity:1, transition:{duration:1.5, ease: easeInOut}}}
+          className="text-center lg:text-left w-96">
           <Lottie animationData={registerLottieData}> 
             
      </Lottie>
-    </div>
-      <div className="card bg-base-100 w-full max-w-lg shrink-0  border rounded-lg   p-8">
+    </motion.div>
+        <motion.div
+      
+      initial={{ x: -50, opacity: 0 }}
+      animate={{x:0 , opacity:1, transition:{duration:1.5, ease: easeInOut}}}
+          className="card bg-base-100 w-full max-w-lg shrink-0  border rounded-lg   p-8">
         <h3 className='font-bold text-2xl text-center'>Register your account</h3>
       <form onSubmit={handleSubmit} className="card-body">
         <div className="form-control">
@@ -126,7 +135,7 @@ const [showPassword,setShowPassword]=useState(false)
           <button className='text-center font-semibold'><Link to="/signIn"  className='text-red-500'>Login</Link></button>
           
            <button onClick={handleLoginWithGoogle} className="w-full btn font-bold text-xl my-3"><FaGoogle></FaGoogle> Login with google</button>
-    </div>
+    </motion.div>
     </div>
 
     </div>
